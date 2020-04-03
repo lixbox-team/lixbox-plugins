@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+    <Match>
+        <Class name="fr.lixbox.gradle.task.JacocoServerCommandTask" />
+        <Bug code="Dm" />
+    </Match>
+</FindBugsFilter>
