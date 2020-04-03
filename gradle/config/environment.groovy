@@ -10,8 +10,8 @@ desc_project{
         minorVersion=0
     }
     artefact{
-        group="fr.lixbox.lixbox-test"
-        project="lixbox-test"
+        group="fr.lixbox.lixbox-plugins"
+        project="lixbox-plugins"
         projectKey="${group}:${project}"
     }
 	uri{
