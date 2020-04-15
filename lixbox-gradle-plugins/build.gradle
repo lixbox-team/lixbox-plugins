@@ -28,6 +28,16 @@ project(':lixbox-gradle-plugins'){
 	    testCompile "com.github.tomakehurst:wiremock:2.19.0"
 	}
     
+    jar{
+       manifest {
+            attributes(
+                "Implementation-Title": project.name, 
+                "Implementation-Version": archiveVersion, 
+                "Implementation-Timestamp": new Date()
+            )
+        }
+    }
+    
     eclipse{
         wtp{
             facet {
