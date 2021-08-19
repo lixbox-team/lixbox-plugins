@@ -131,7 +131,6 @@ subprojects {
             }
         }
         repositories {
-            mavenLocal()
             maven {
                 url maven_url
                 credentials{
@@ -142,7 +141,7 @@ subprojects {
             if (isProd)
             {
     			maven {
-	                url config.pic.mavencentral
+	                url config.pic.mavencentral.uri
 	                credentials{
 		                username = System.getProperty("mavencentral.login")
 		                password = System.getProperty("mavencentral.password")

@@ -6,7 +6,7 @@ desc_project{
         minorVersion=0
     }
     artefact{
-        group="fr.lixbox.lixbox-plugins"
+        group="fr.lixbox.plugins"
         project="lixbox-plugins"
         projectKey="${group}:${project}"
     }
@@ -27,7 +27,7 @@ pic{
 		uri="https://repos.service.lixtec.fr/artifactory"
     }
 	mavencentral{
-		uri="https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"		    
+		uri="https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"	    
 	}
 }
 
