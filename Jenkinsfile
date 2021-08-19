@@ -8,7 +8,7 @@ branchName = 'jdk-11'
 def onFailed(e) {
     currentBuild.result = 'FAILED'
     BUILD_STATUS = 'FAILED'
-    def msg = 'The '+JOB_NAME+' - Build # '+BUILD_NUMBER+' is '+BUILD_STATUS+'. \n Check console output at '+BUILD_URL+' to view the results or check the project site at '+projectSiteUri;   
+    def msg = 'The '+JOB_NAME+' - Build # '+BUILD_NUMBER+' is '+BUILD_STATUS+'. \n Check console output at '+BUILD_URL+' to view the results ';   
     mattermostSend channel: channel, color: '#dd4040', endpoint: mattermostUri, message: msg, text: title
     office365ConnectorSend message: msg, status: BUILD_STATUS, webhookUrl: teamsHook, color: "dd4040"
     
@@ -79,8 +79,8 @@ withCredentials([usernamePassword(credentialsId: 'e1529c62-f3ec-4b12-bbad-2a352f
 	        echo 'Distribution for production started'
 	        retry(2){ 
 	            try{
-	            	withCredentials([usernamePassword(credentialsId: 'f33ba02a-2b78-47ae-9577-86299b22dbde', usernameVariable: 'JENKINS_LOGIN', passwordVariable: 'JENKINS_PWD')]) {
-	                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dmavencentral.login=${ JENKINS_LOGIN} -Dmavencentral.password=${ JENKINS_PWD} -Dorg.ajoberstar.grgit.auth.username=${JENKINS_USR} -Dorg.ajoberstar.grgit.auth.password=${JENKINS_PWD} -Penv=prod --stacktrace publish'
+	            	withCredentials([usernamePassword(credentialsId: 'f33ba02a-2b78-47ae-9577-86299b22dbde', usernameVariable: 'MVCT_LOGIN', passwordVariable: 'MVCT_PWD')]) {
+	                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dmavencentral.login=${MVCT_LOGIN} -Dmavencentral.password=${MVCT_PWD} -Dorg.ajoberstar.grgit.auth.username=${JENKINS_USR} -Dorg.ajoberstar.grgit.auth.password=${JENKINS_PWD} -Penv=prod --stacktrace publish'
                     }
 	                if(!currentBuild.result)
 	                {
