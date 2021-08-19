@@ -2,7 +2,7 @@ BUILD_STATUS = 'success';
 gitUri = 'https://github.com/lixbox-team/lixbox-plugins.git';
 teamsHook  = '${TEAMS_BOT_URI}';
 channel = 'lixbox';
-branchName = 'jdk-8'
+branchName = 'jdk-11'
 
 @NonCPS
 def onFailed(e) {
@@ -15,7 +15,7 @@ def onFailed(e) {
 }
 
 withCredentials([usernamePassword(credentialsId: 'e1529c62-f3ec-4b12-bbad-2a352fda9af2', usernameVariable: 'JENKINS_LOGIN', passwordVariable: 'JENKINS_PWD')]) {
-	node('slave-gradle-jdk11"') {    
+	node('slave-gradle-jdk11') {    
 	    stage('Init'){
 	        echo 'Initialisation started'
 	        try{
