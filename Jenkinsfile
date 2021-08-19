@@ -9,7 +9,6 @@ def onFailed(e) {
     currentBuild.result = 'FAILED'
     BUILD_STATUS = 'FAILED'
     def msg = 'The '+JOB_NAME+' - Build # '+BUILD_NUMBER+' is '+BUILD_STATUS+'. \n Check console output at '+BUILD_URL+' to view the results ';   
-    mattermostSend channel: channel, color: '#dd4040', endpoint: mattermostUri, message: msg, text: title
     office365ConnectorSend message: msg, status: BUILD_STATUS, webhookUrl: teamsHook, color: "dd4040"
     
 }
@@ -18,6 +17,8 @@ withCredentials([usernamePassword(credentialsId: 'e1529c62-f3ec-4b12-bbad-2a352f
 	node('slave-gradle-jdk11') {    
 	    stage('Init'){
 	        echo 'Initialisation started'
+	        office365ConnectorSend message: 'The '+JOB_NAME+' - Build # '+BUILD_NUMBER+'  start. \n Check console output at '+BUILD_URL+' to view the results ' , webhookUrl: teamsHook, color: "rgb(184, 255, 184)"
+	        
 	        try{
 	            sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew --stop -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD} '
 	        }
