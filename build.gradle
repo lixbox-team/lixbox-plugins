@@ -83,7 +83,7 @@ allprojects {
 
 task tagRelease() {
     doLast {
-        def grgit = org.ajoberstar.grgit.Grgit.open(dir: project.rootDir)
+        def grgit = org.ajoberstar.grgit.Grgit.open(dir: project.rootDir, credentials: new Credentials(username, ""))
         def tagger = new Person(name:"lixtec bot", email:"lixtec-bot@lixtec.fr")
         grgit.tag.add{
             name="$project.version"
