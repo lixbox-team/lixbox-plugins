@@ -34,7 +34,7 @@ import fr.lixbox.gradle.task.JacocoServerCommandTask;
 import fr.lixbox.gradle.task.SonarQualityCheckTask;
 
 /**
- * Cette classe est le plugin gerant les tâches spécifiques du Lixbox.
+ * Cette classe est le plugin gerant les taches specifiques du Lixbox.
  * 
  * @author ludovic.terral
  */

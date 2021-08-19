@@ -39,7 +39,7 @@ import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
 /**
- * Cette classe récupère le status du quality gate d'un projet dans sonar.
+ * Cette classe recupere le status du quality gate d'un projet dans sonar.
  * 
  * @author ludovic.terral
  */

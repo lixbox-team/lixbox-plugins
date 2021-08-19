@@ -35,7 +35,7 @@ import fr.lixbox.gradle.extension.sonar.api.QualityGateResponseParser;
 import fr.lixbox.gradle.extension.sonar.api.SonarHttpRequester;
 
 /**
- * Cette classe récupère le status du quality gate d'un projet dans sonar.
+ * Cette classe recupere le status du quality gate d'un projet dans sonar.
  * 
  * @author ludovic.terral
  */

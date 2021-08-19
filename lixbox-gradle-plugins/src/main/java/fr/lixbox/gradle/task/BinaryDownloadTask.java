@@ -38,7 +38,7 @@ import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
 
 /**
- * Cette classe télécharge un objet vers un fichier local.
+ * Cette classe telecharge un objet vers un fichier local.
  *
  * @author ludovic.terral
  */
