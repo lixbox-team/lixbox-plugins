@@ -106,6 +106,7 @@ subprojects {
     apply plugin: 'com.github.jk1.dependency-license-report'
     apply plugin: 'org.owasp.dependencycheck'
     apply plugin: 'maven-publish'
+    apply plugin: 'signing'
 
     repositories {
 	        maven{
@@ -116,6 +117,24 @@ subprojects {
 	            }
 	        }
     }
+
+    task javadocJar(type: Jar) {
+	    classifier = 'javadoc'
+	    from javadoc
+	}
+	
+	task sourcesJar(type: Jar) {
+	    classifier = 'sources'
+	    from sourceSets.main.allSource
+	}
+	
+    artifacts {
+	    archives javadocJar, sourcesJar
+	}
+        
+	signing {
+	    sign configurations.archives
+	}
         
     publishing {
         publications {
@@ -277,6 +296,8 @@ subprojects {
     if("prod".equals(project.getProperty("env"))) {
         tasks.publish.finalizedBy(tagRelease);
     }
+    tasks.publish.dependsOn javadocJar
+    tasks.publish.dependsOn sourcesJar
     
     tasks.eclipse.dependsOn tasks.cleanEclipse    
     tasks.check.dependsOn(tasks.generateLicenseReport);
