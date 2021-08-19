@@ -128,8 +128,9 @@ subprojects {
 	    from sourceSets.main.allSource
 	}
 	
-    artifacts {
-	    archives javadocJar, sourcesJar
+	java {
+	    withJavadocJar()
+	    withSourcesJar()
 	}
         
 	signing {
