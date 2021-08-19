@@ -257,8 +257,8 @@ subprojects {
         data {
             driver="org.postgresql.Driver"
             connectionString="jdbc:postgresql://owasp.service.lixtec.fr:54320/owasp"
-            username=System.getProperty("owasp.login")
-            password=System.getProperty("owasp.password")
+            username=System.getProperty("jenkins.login")
+            password=System.getProperty("jenkins.password")
         }
         analyzers{
             centralEnabled=false
