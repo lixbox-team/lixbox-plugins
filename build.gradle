@@ -47,6 +47,8 @@ import  org.ajoberstar.grgit.Person
 import  org.apache.commons.io.IOUtils
 import groovy.io.FileType
 
+apply from: 'gradle/project-critical-update.gradle'  
+
 sonarqube  {
     properties {
         property "sonar.sourceEncoding","UTF-8"

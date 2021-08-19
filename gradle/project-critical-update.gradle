@@ -1,0 +1,12 @@
+println "======================================== critical updates =========================="
+subprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group.contains('org.apache.commons') && 
+                    details.requested.name.contains('commons-compress')) {
+                    details.useVersion '1.21'
+                    details.because 'critical cve in <1.21'
+            }
+        }
+    }
+}

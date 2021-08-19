@@ -52,7 +52,7 @@ public class SonarHttpRequester
     {
         String sonarApiGate = config.getSonarUrl() + String.format(SONAR_API_GATE, config.getProjectKey());
         CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpGet request = new HttpGet(sonarApiGate);        
+        var request = new HttpGet(sonarApiGate);        
         byte[] credentials = org.apache.commons.codec.binary.Base64.encodeBase64((config.getUtilisateur() + ":" + config.getPassword()).getBytes(StandardCharsets.UTF_8));
         request.setHeader("Authorization", "Basic " + new String(credentials, StandardCharsets.UTF_8));
         return executeGetRequest(client.execute(request));
@@ -66,7 +66,7 @@ public class SonarHttpRequester
         {
             int statusCode = response.getStatusLine().getStatusCode();
             HttpEntity entity = response.getEntity();
-            String returnResponse = EntityUtils.toString(entity);
+            var  returnResponse = EntityUtils.toString(entity);
             EntityUtils.consume(entity);
             if (statusCode != 200)
             {

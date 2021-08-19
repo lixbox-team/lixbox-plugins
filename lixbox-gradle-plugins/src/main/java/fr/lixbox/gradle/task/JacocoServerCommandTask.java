@@ -60,12 +60,12 @@ public class JacocoServerCommandTask extends DefaultTask implements Serializable
     public void sendCommandOnJacocoServer()
     {
         try(
-            Socket socket = new Socket(host, port);
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream(),Charset.forName("UTF-8")));
+            var socket = new Socket(host, port);
+            var out = new PrintWriter(socket.getOutputStream(), true);
+            var in = new BufferedReader(new InputStreamReader(socket.getInputStream(),Charset.forName("UTF-8")));
             )
         {
-            String fromServer = "";
+            var fromServer = "";
             do{
                 Thread.sleep(100);
                 fromServer = in.readLine();

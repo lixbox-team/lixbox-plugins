@@ -21,7 +21,7 @@ pic{
         uri="https://ci.service.lixtec.fr/view/${channel}"
     }  
     sonar{
-        uri="https://quality.service.lixtec.fr/dashboard?id=${desc_project.artefact.group}%3A${desc_project.artefact.project}"
+        uri="https://quality.service.lixtec.fr"
     }
     artifactory{
 		uri="https://repos.service.lixtec.fr/artifactory"

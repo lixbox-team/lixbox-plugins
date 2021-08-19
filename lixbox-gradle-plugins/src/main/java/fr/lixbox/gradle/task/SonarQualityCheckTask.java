@@ -60,7 +60,7 @@ public class SonarQualityCheckTask extends DefaultTask implements Serializable
         }
         TimeUnit.MILLISECONDS.sleep(extension.getWaitingTime());
 
-        String requesterResult = "";
+        var requesterResult = "";
         try
         {
             requesterResult = sonarHttpRequester.getAPIInfo(extension);
