@@ -54,7 +54,7 @@ withCredentials([usernamePassword(credentialsId: 'e1529c62-f3ec-4b12-bbad-2a352f
 	        echo 'Distribution for test started'
 	        retry(2){ 
 	            try{
-                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew  -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dorg.ajoberstar.grgit.auth.username=${JENKINS_LOGIN} -Dorg.ajoberstar.grgit.auth.password=${JENKINS_PWD} --stacktrace publish'
+                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew  -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dorg.ajoberstar.grgit.auth.username=${JENKINS_LOGIN} -Dorg.ajoberstar.grgit.auth.password=${JENKINS_PWD} --stacktrace publish -Psigning.password=${KS_PWD}'
 	            }
 	            catch (e){
 	                onFailed(e);
@@ -81,7 +81,7 @@ withCredentials([usernamePassword(credentialsId: 'e1529c62-f3ec-4b12-bbad-2a352f
 	        retry(2){ 
 	            try{
 	            	withCredentials([usernamePassword(credentialsId: 'f33ba02a-2b78-47ae-9577-86299b22dbde', usernameVariable: 'MVCT_LOGIN', passwordVariable: 'MVCT_PWD')]) {
-	                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dmavencentral.login=${MVCT_LOGIN} -Dmavencentral.password=${MVCT_PWD} -Dgit.token=${GIT_TOKEN} -Penv=prod --stacktrace publish'
+	                    sh 'export SOURCE_BUILD_NUMBER=${BUILD_NUMBER} && ${WORKSPACE}/gradlew -Djenkins.login=${JENKINS_LOGIN} -Djenkins.password=${JENKINS_PWD}  -Dmavencentral.login=${MVCT_LOGIN} -Dmavencentral.password=${MVCT_PWD} -Dgit.token=${GIT_TOKEN} -Penv=prod --stacktrace publish -Psigning.password=${KS_PWD}'
                     }
 	                if(!currentBuild.result)
 	                {

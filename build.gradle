@@ -133,10 +133,6 @@ subprojects {
 	    withSourcesJar()
 	}
         
-	signing {
-	    sign configurations.archives
-	}
-        
     publishing {
         publications {
             mavenJava(MavenPublication) {
@@ -194,6 +190,11 @@ subprojects {
 			}
         }
     }
+        
+     project.ext."signing.secretKeyRingFile" =  "${rootDir}/signing.gpg"
+	signing {
+	    sign publishing.publications.mavenJava
+	}
     
     sourceCompatibility = 11
     targetCompatibility = 11
